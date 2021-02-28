@@ -4,14 +4,16 @@ import java.util.Objects;
 
 public class Employer {
     private int id;
-    private static int nextId = 1;
+    private static int nextId = 1; //changing value not stored in Employer object
     private String value;
 
+    //constructor - every new Employer object will get a different ID#
     public Employer() {
         id = nextId;
         nextId++;
     }
 
+    //constructor - calls Employer constructor to initialize ID. Also assigns String value to value field.
     public Employer(String value) {
         this();
         this.value = value;
