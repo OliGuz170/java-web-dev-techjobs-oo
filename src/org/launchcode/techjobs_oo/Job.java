@@ -17,12 +17,12 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positiontype, CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location, PositionType positiontype, CoreCompetency coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -46,50 +46,84 @@ public class Job {
         return Objects.hash(id, name, employer, location, positionType, coreCompetency);
     }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+    @Override
+    public String toString() {
+        String str;
+        if (getName() == "" && getEmployer().getValue().equals("") && getLocation().getValue().equals("") && getPositionType().getValue().equals("") && getCoreCompetency().getValue().equals("")) {
+            return "Oops! This job does not exist";
+        }
 
-    public int getId() {
-        return id;
+        if (getName() == "") {
+            this.name = "Data not available";
+        }
+
+        if (getEmployer().getValue().equals("")) {
+            this.employer = new Employer("Data not available");
+        }
+
+        if (getLocation().getValue().equals("")) {
+            this.location = new Location("Data not available");
+        }
+
+        if (getPositionType().getValue().equals("")) {
+            this.positionType = new PositionType("Data not available");
+        }
+
+        if (getCoreCompetency().getValue().equals("")) {
+            this.coreCompetency = new CoreCompetency("Data not available");
+        }
+
+        str = "\nID: " + getId() + "\nName: " + getName() + "\nEmployer: " + getEmployer() + "\nLocation: " + getLocation() + "\nPosition Type: " + getPositionType() + "\nCore Competency: " + getCoreCompetency();
+
+        return str;
     }
 
-    public String getName() {
-        return name;
+        // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+        //  and id.
+
+        public int getId () {
+            return id;
+        }
+
+        public String getName () {
+            return name;
+        }
+
+        public void setName (String name){
+            this.name = name;
+        }
+
+        public Employer getEmployer () {
+            return employer;
+        }
+
+        public void setEmployer (Employer employer){
+            this.employer = employer;
+        }
+
+        public Location getLocation () {
+            return location;
+        }
+
+        public void setLocation (Location location){
+            this.location = location;
+        }
+
+        public PositionType getPositionType () {
+            return positionType;
+        }
+
+        public void setPositionType (PositionType positionType){
+            this.positionType = positionType;
+        }
+
+        public CoreCompetency getCoreCompetency () {
+            return coreCompetency;
+        }
+
+        public void setCoreCompetency (CoreCompetency coreCompetency){
+            this.coreCompetency = coreCompetency;
+        }
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Employer getEmployer() {
-        return employer;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public PositionType getPositionType() {
-        return positionType;
-    }
-
-    public void setPositionType(PositionType positionType) {
-        this.positionType = positionType;
-    }
-
-    public CoreCompetency getCoreCompetency() {
-        return coreCompetency;
-    }
-
-    public void setCoreCompetency(CoreCompetency coreCompetency) {
-        this.coreCompetency = coreCompetency;
-    }
-}
